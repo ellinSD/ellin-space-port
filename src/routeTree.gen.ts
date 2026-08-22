@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as ApiPublicCvRouteImport } from './routes/api/public/cv'
 import { Route as ApiPublicPhotoRouteImport } from './routes/api/public/photo'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiPublicCvRoute = ApiPublicCvRouteImport.update({
@@ -31,30 +37,34 @@ const ApiPublicPhotoRoute = ApiPublicPhotoRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/api/public/cv': typeof ApiPublicCvRoute
   '/api/public/photo': typeof ApiPublicPhotoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/api/public/cv': typeof ApiPublicCvRoute
   '/api/public/photo': typeof ApiPublicPhotoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/api/public/cv': typeof ApiPublicCvRoute
   '/api/public/photo': typeof ApiPublicPhotoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/public/cv' | '/api/public/photo'
+  fullPaths: '/' | '/admin' | '/api/public/cv' | '/api/public/photo'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/public/cv' | '/api/public/photo'
-  id: '__root__' | '/' | '/api/public/cv' | '/api/public/photo'
+  to: '/' | '/admin' | '/api/public/cv' | '/api/public/photo'
+  id: '__root__' | '/' | '/admin' | '/api/public/cv' | '/api/public/photo'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
   ApiPublicCvRoute: typeof ApiPublicCvRoute
   ApiPublicPhotoRoute: typeof ApiPublicPhotoRoute
 }
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/cv': {
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
   ApiPublicCvRoute: ApiPublicCvRoute,
   ApiPublicPhotoRoute: ApiPublicPhotoRoute,
 }
