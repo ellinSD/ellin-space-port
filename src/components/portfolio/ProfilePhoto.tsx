@@ -10,7 +10,9 @@ export function ProfilePhoto({
   className?: string;
   alt?: string;
 }) {
-  const [failed, setFailed] = useState(false);
+  const [stage, setStage] = useState<0 | 1 | 2>(0);
+  const failed = stage === 2;
+  const src = stage === 0 ? PHOTO_URL : profileAsset.url;
 
   return (
     <div
