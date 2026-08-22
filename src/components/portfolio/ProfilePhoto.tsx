@@ -27,10 +27,11 @@ export function ProfilePhoto({
         </div>
       ) : (
         <img
-          src={PHOTO_URL}
+          key={src}
+          src={src}
           alt={alt}
           loading="lazy"
-          onError={() => setFailed(true)}
+          onError={() => setStage((s) => (s === 0 ? 1 : 2))}
           className="h-full w-full object-cover"
         />
       )}
