@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { PHOTO_URL } from "@/lib/portfolio-api";
+import profileAsset from "@/assets/profile.jpg.asset.json";
 import { cn } from "@/lib/utils";
 
 export function ProfilePhoto({
