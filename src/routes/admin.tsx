@@ -177,7 +177,7 @@ function Dashboard() {
 
   const addProject = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!project.title.trim()) return toast.error("Title is required");
+    if (!project.title.trim()) { toast.error("Title is required"); return; }
     const { error } = await supabase.from("projects").insert({
       title: project.title.trim().slice(0, 120),
       description: project.description.trim().slice(0, 1000),
@@ -189,7 +189,7 @@ function Dashboard() {
       live_url: project.live_url.trim() || null,
       sort_order: projects.length,
     });
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     setProject({ title: "", description: "", tech: "", github_url: "", live_url: "" });
     qc.invalidateQueries({ queryKey: projectsQuery.queryKey });
     toast.success("Project added");
@@ -197,14 +197,14 @@ function Dashboard() {
 
   const removeProject = async (item: Project) => {
     const { error } = await supabase.from("projects").delete().eq("id", item.id);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     qc.invalidateQueries({ queryKey: projectsQuery.queryKey });
     toast.success("Project removed");
   };
 
   const addAchievement = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!achievement.title.trim()) return toast.error("Title is required");
+    if (!achievement.title.trim()) { toast.error("Title is required"); return; }
     const { error } = await supabase.from("achievements").insert({
       title: achievement.title.trim().slice(0, 120),
       description: achievement.description.trim().slice(0, 1000),
@@ -212,7 +212,7 @@ function Dashboard() {
       date_label: achievement.date_label.trim() || null,
       sort_order: achievements.length,
     });
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     setAchievement({ title: "", description: "", issuer: "", date_label: "" });
     qc.invalidateQueries({ queryKey: achievementsQuery.queryKey });
     toast.success("Achievement added");
@@ -220,7 +220,7 @@ function Dashboard() {
 
   const removeAchievement = async (item: Achievement) => {
     const { error } = await supabase.from("achievements").delete().eq("id", item.id);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     qc.invalidateQueries({ queryKey: achievementsQuery.queryKey });
     toast.success("Achievement removed");
   };
@@ -235,12 +235,12 @@ function Dashboard() {
     });
     if (upErr) {
       setUploading(null);
-      return toast.error(upErr.message);
+      { toast.error(upErr.message); return; }
     }
     const patch = kind === "cv" ? { cv_path: path } : { photo_path: path };
     const { error } = await supabase.from("site_settings").update(patch).eq("id", 1);
     setUploading(null);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     qc.invalidateQueries({ queryKey: settingsQuery.queryKey });
     toast.success(kind === "cv" ? "CV updated" : "Photo updated");
   };
