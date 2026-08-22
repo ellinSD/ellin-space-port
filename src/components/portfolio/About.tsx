@@ -1,7 +1,6 @@
 import { BookOpen, Camera, Clapperboard, Cpu, GraduationCap, Music, Plane } from "lucide-react";
 import { profile, hobbies } from "@/lib/portfolio-content";
 import { SectionHeading } from "./SectionHeading";
-import { ProfilePhoto } from "./ProfilePhoto";
 
 const icons = { Plane, BookOpen, Camera, Music, Clapperboard, Cpu } as const;
 
