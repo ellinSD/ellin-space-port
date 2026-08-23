@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { PHOTO_URL } from "@/lib/portfolio-api";
 import profileAsset from "@/assets/profile.jpg.asset.json";
 import { cn } from "@/lib/utils";
 
@@ -10,9 +9,7 @@ export function ProfilePhoto({
   className?: string;
   alt?: string;
 }) {
-  const [stage, setStage] = useState<0 | 1 | 2>(0);
-  const failed = stage === 2;
-  const src = stage === 0 ? PHOTO_URL : profileAsset.url;
+  const [failed, setFailed] = useState(false);
 
   return (
     <div
@@ -27,11 +24,10 @@ export function ProfilePhoto({
         </div>
       ) : (
         <img
-          key={src}
-          src={src}
+          src={profileAsset.url}
           alt={alt}
           loading="lazy"
-          onError={() => setStage((s) => (s === 0 ? 1 : 2))}
+          onError={() => setFailed(true)}
           className="h-full w-full object-cover"
         />
       )}
