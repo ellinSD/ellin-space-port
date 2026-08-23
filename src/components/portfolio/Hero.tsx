@@ -7,8 +7,8 @@ import { ProfilePhoto } from "./ProfilePhoto";
 export function Hero() {
   return (
     <section id="home" className="hero-surface relative overflow-hidden pt-28">
-      <div className="section-shell grid items-center gap-12 md:grid-cols-[1.2fr_0.8fr]">
-        <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
+      <div className="section-shell flex flex-row items-center gap-6 md:gap-12">
+        <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 flex-1">
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-xs text-muted-foreground">
             <MapPin className="size-3.5 text-primary" />
             {profile.contact.location}
@@ -43,7 +43,7 @@ export function Hero() {
           </div>
         </div>
 
-        <ProfilePhoto className="mx-auto aspect-4/5 w-full max-w-xs shadow-[var(--shadow-elevated)]" />
+        <ProfilePhoto className="w-full max-w-[120px] flex-shrink-0 self-center sm:max-w-[180px] md:max-w-[240px] lg:max-w-[280px] shadow-[var(--shadow-elevated)]" />
       </div>
     </section>
   );

@@ -17,7 +17,7 @@ export function ProfilePhoto({
   return (
     <div
       className={cn(
-        "relative overflow-hidden rounded-3xl border border-border bg-surface",
+        "relative aspect-square overflow-hidden rounded-full border border-border bg-surface",
         className,
       )}
     >
