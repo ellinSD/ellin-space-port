@@ -25,20 +25,14 @@ export function Skills() {
                 <h3 className="text-base font-semibold">{group.title}</h3>
               </div>
 
-              <div className="mt-6 space-y-4">
+              <div className="mt-6 flex flex-wrap gap-2">
                 {group.skills.map((skill) => (
-                  <div key={skill.name}>
-                    <div className="flex items-center justify-between text-sm">
-                      <span>{skill.name}</span>
-                      <span className="text-xs text-muted-foreground">{skill.level}%</span>
-                    </div>
-                    <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-muted">
-                      <div
-                        className="h-full rounded-full bg-primary transition-all duration-700"
-                        style={{ width: `${skill.level}%` }}
-                      />
-                    </div>
-                  </div>
+                  <span
+                    key={skill.name}
+                    className="inline-flex items-center rounded-full border border-border bg-surface px-3.5 py-1.5 text-xs text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground"
+                  >
+                    {skill.name}
+                  </span>
                 ))}
               </div>
             </div>
