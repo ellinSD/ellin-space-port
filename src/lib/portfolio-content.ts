@@ -1,6 +1,6 @@
 export const profile = {
   name: "Modinatul Ferdows Ellin",
-  tagline: "ICT Student | Aspiring Software Developer | Problem Solver",
+  tagline: "ICT Student",
   intro:
     "3rd-year Information & Communication Engineering student at Bangladesh University of Professionals, building practical software while sharpening my skills in programming, databases and web technologies.",
   bio: "I am an ICT student driven by curiosity, continuous learning and a belief that technology should solve real, everyday problems. My studies cover programming, computer networking, databases and web technologies, and I enjoy turning classroom theory into small working projects. I am steadily growing my toolkit and looking for opportunities to collaborate, learn and build software that matters.",
