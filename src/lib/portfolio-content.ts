@@ -3,7 +3,7 @@ export const profile = {
   tagline: "ICT Student",
   intro:
     "I am a 3rd-year Information & Communication Engineering student at Bangladesh University of Professionals, passionate about technology and interested in software development, programming, databases, and web technologies. I am eager to learn new skills, explore innovative ideas, and gain practical experience in the field of technology.",
-  bio: "I am an ICT student driven by curiosity, continuous learning and a belief that technology should solve real, everyday problems. My studies cover programming, computer networking, databases and web technologies, and I enjoy turning classroom theory into small working projects. I am steadily growing my toolkit and looking for opportunities to collaborate, learn and build software that matters.",
+  bio: "Driven by curiosity and a passion for technology, with a strong interest in software development and problem-solving. Always focused on learning, improving technical skills, and turning ideas into practical solutions.",
   education: {
     degree: "B.Sc. in Information & Communication Engineering",
     institution: "Bangladesh University of Professionals (BUP), Dhaka",
