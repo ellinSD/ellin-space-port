@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { ExternalLink, Github, FolderGit2 } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { ExternalLink, Github, FolderGit2, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useIsAdmin } from "@/hooks/use-is-admin";
 import { projectsQuery, type Project } from "@/lib/portfolio-api";
 import { profile } from "@/lib/portfolio-content";
 import { SectionHeading } from "./SectionHeading";
