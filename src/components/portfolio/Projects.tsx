@@ -48,6 +48,7 @@ export function ProjectCard({ project }: { project: Project }) {
 
 export function Projects() {
   const { data: projects = [], isLoading } = useQuery(projectsQuery);
+  const isAdmin = useIsAdmin();
 
   return (
     <section id="projects" className="section-shell">
@@ -56,6 +57,16 @@ export function Projects() {
         title="Things I'm building"
         description="A growing collection of coursework and personal projects. New work lands here as I finish it."
       />
+
+      {isAdmin && (
+        <div className="mb-6 flex justify-end">
+          <Button asChild size="sm">
+            <Link to="/admin">
+              <Plus className="size-4" /> Add project
+            </Link>
+          </Button>
+        </div>
+      )}
 
       {isLoading ? (
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
