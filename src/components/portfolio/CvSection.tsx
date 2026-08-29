@@ -51,23 +51,6 @@ export function CvSection() {
         </div>
       </div>
 
-      {hasCv && (
-        <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-surface">
-          <iframe
-            src={CV_URL}
-            title="Modinatul Ferdows Ellin CV"
-            className="h-[70vh] w-full bg-surface"
-          />
-          <p className="border-t border-border p-4 text-center text-sm text-muted-foreground">
-            Can't see the preview?{" "}
-            <a href={CV_URL} target="_blank" rel="noreferrer" className="text-primary underline">
-              Open the CV in a new tab
-            </a>
-            .
-          </p>
-        </div>
-      )}
-
     </section>
   );
 }
