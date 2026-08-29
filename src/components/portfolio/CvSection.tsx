@@ -1,12 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
-import { Download, Eye, FileText } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { Download, Eye, FileText, Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useIsAdmin } from "@/hooks/use-is-admin";
 import { CV_DOWNLOAD_URL, CV_URL, settingsQuery } from "@/lib/portfolio-api";
 import { SectionHeading } from "./SectionHeading";
 
 export function CvSection() {
   const { data: settings } = useQuery(settingsQuery);
   const hasCv = Boolean(settings?.cv_path);
+  const isAdmin = useIsAdmin();
 
   return (
     <section id="cv" className="section-shell">
@@ -38,6 +41,13 @@ export function CvSection() {
               <Download className="size-4" /> Download CV
             </a>
           </Button>
+          {isAdmin && (
+            <Button asChild size="lg" variant="secondary">
+              <Link to="/admin">
+                <Upload className="size-4" /> Update CV
+              </Link>
+            </Button>
+          )}
         </div>
       </div>
 
