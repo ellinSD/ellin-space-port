@@ -53,13 +53,21 @@ export function CvSection() {
 
       {hasCv && (
         <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-surface">
-          <object data={CV_URL} type="application/pdf" className="h-[70vh] w-full">
-            <p className="p-6 text-sm text-muted-foreground">
-              Your browser can't display the PDF inline. Use the download button above.
-            </p>
-          </object>
+          <iframe
+            src={CV_URL}
+            title="Modinatul Ferdows Ellin CV"
+            className="h-[70vh] w-full bg-surface"
+          />
+          <p className="border-t border-border p-4 text-center text-sm text-muted-foreground">
+            Can't see the preview?{" "}
+            <a href={CV_URL} target="_blank" rel="noreferrer" className="text-primary underline">
+              Open the CV in a new tab
+            </a>
+            .
+          </p>
         </div>
       )}
+
     </section>
   );
 }
