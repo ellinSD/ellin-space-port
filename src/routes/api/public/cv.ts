@@ -3,7 +3,8 @@ import { createFileRoute } from "@tanstack/react-router";
 export const Route = createFileRoute("/api/public/cv")({
   server: {
     handlers: {
-      GET: async () => {
+      GET: async ({ request }) => {
+        const wantsDownload = new URL(request.url).searchParams.get("download") === "1";
         const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
         const { data: settings } = await supabaseAdmin
           .from("site_settings")
@@ -20,7 +21,7 @@ export const Route = createFileRoute("/api/public/cv")({
         return new Response(await file.arrayBuffer(), {
           headers: {
             "content-type": file.type || "application/pdf",
-            "content-disposition": 'inline; filename="Modinatul-Ferdows-Ellin-CV.pdf"',
+            "content-disposition": `${wantsDownload ? "attachment" : "inline"}; filename="Modinatul-Ferdows-Ellin-CV.pdf"`,
             "cache-control": "public, max-age=60",
           },
         });

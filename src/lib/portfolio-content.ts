@@ -8,7 +8,7 @@ export const profile = {
     degree: "B.Sc. in Information & Communication Engineering",
     institution: "Bangladesh University of Professionals (BUP), Dhaka",
     department: "Department of Information & Communication Technology",
-    status: "3rd year — expected graduation 2028",
+    status: "3rd year — expected graduation 2027",
   },
   contact: {
     phone: "01819666307",

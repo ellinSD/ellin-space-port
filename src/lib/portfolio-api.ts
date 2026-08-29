@@ -64,4 +64,5 @@ export const settingsQuery = {
 };
 
 export const CV_URL = "/api/public/cv";
+export const CV_DOWNLOAD_URL = "/api/public/cv?download=1";
 export const PHOTO_URL = "/api/public/photo";
