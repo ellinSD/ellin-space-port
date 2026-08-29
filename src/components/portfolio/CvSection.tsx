@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { Download, FileText } from "lucide-react";
+import { Download, Eye, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { CV_URL, settingsQuery } from "@/lib/portfolio-api";
+import { CV_DOWNLOAD_URL, CV_URL, settingsQuery } from "@/lib/portfolio-api";
 import { SectionHeading } from "./SectionHeading";
 
 export function CvSection() {
@@ -27,11 +27,18 @@ export function CvSection() {
           </div>
         </div>
 
-        <Button asChild size="lg" disabled={!hasCv}>
-          <a href={CV_URL} target="_blank" rel="noreferrer">
-            <Download className="size-4" /> Download CV
-          </a>
-        </Button>
+        <div className="flex flex-wrap gap-3">
+          <Button asChild size="lg" variant="outline" disabled={!hasCv}>
+            <a href={CV_URL} target="_blank" rel="noreferrer">
+              <Eye className="size-4" /> View CV
+            </a>
+          </Button>
+          <Button asChild size="lg" disabled={!hasCv}>
+            <a href={CV_DOWNLOAD_URL}>
+              <Download className="size-4" /> Download CV
+            </a>
+          </Button>
+        </div>
       </div>
 
       {hasCv && (
