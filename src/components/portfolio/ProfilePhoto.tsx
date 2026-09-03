@@ -1,5 +1,4 @@
 import { useState } from "react";
-import profileAsset from "@/assets/profile.jpg.asset.json";
 import { cn } from "@/lib/utils";
 
 export function ProfilePhoto({
@@ -20,11 +19,13 @@ export function ProfilePhoto({
     >
       {failed ? (
         <div className="flex h-full w-full items-center justify-center bg-accent">
-          <span className="font-display text-5xl font-bold accent-gradient-text">MFE</span>
+          <span className="font-display text-5xl font-bold accent-gradient-text">
+            MFE
+          </span>
         </div>
       ) : (
         <img
-          src={profileAsset.url}
+          src={`${import.meta.env.BASE_URL}IMG_6958.PNG`}
           alt={alt}
           loading="lazy"
           onError={() => setFailed(true)}
