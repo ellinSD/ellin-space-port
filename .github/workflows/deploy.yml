@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-
   workflow_dispatch:
 
 permissions:
@@ -35,13 +34,40 @@ jobs:
       - name: Build portfolio
         run: npm run build
 
+      - name: Prepare GitHub Pages files
+        run: |
+          rm -rf pages
+          mkdir -p pages
+
+          if [ -f "dist/index.html" ]; then
+            cp -r dist/. pages/
+          elif [ -f "dist/_shell.html" ]; then
+            cp -r dist/. pages/
+            cp dist/_shell.html pages/index.html
+          elif [ -f "dist/client/index.html" ]; then
+            cp -r dist/client/. pages/
+          elif [ -f "dist/client/_shell.html" ]; then
+            cp -r dist/client/. pages/
+            cp dist/client/_shell.html pages/index.html
+          else
+            echo "ERROR: No index.html or _shell.html found"
+            echo "Contents of dist:"
+            find dist -maxdepth 3 -type f | sort
+            exit 1
+          fi
+
+          cp pages/index.html pages/404.html
+
+          echo "Final Pages files:"
+          find pages -maxdepth 2 -type f | sort
+
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: ./dist
+          path: ./pages
 
   deploy:
     runs-on: ubuntu-latest
