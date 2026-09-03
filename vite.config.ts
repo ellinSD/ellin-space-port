@@ -21,7 +21,9 @@ export default defineConfig({
     spa: {
       enabled: true,
       prerender: {
+        enabled: true,
         outputPath: "/index.html",
+        crawlLinks: false,
       },
     },
   },
